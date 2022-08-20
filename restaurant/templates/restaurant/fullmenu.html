@@ -1,0 +1,44 @@
+{% extends 'restaurant/baseforhome.html'%}
+{%block content%}
+<section class="full-menu wrapper">
+  <div class="heading cmt">
+    <h3 class="title-md text-center">Full menu</h3>
+  </div>
+  <div class="menu">
+    <table class="m-auto" style="width: 70%;margin-bottom: 40px;">
+      {% for food in foods %}
+      <tr>
+        <td >
+          {% load static %}
+          <img src="{{food.pimage.url}}" alt="food" width="90" height="90">
+        </td>
+        <td>
+          <p class="titile-xs bold ml-lg" ><a href="/viewfood/{{food.id}}">{{food.name}}</a> </p>
+        </td>
+        <td>
+          <p class="title-xxs pl-md"><a href="/viewfood/{{food.id}}">{{ food.description }}</a></p>
+        </td>
+        <td>
+          <p class="text-danger" >{{food.price}}</p>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+
+  <!-- <table class="table">
+    <tbody>
+        {%for food in foods%}
+      <tr>
+        <img src="{{food.pimage.url}}" width="180" height="180">
+        <td>
+            <a href="/viewfood/{{food.id}}">{{food.name}}</a></td>
+        <td>{{food.price}}</td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table> -->
+</section>
+
+{%endblock%}

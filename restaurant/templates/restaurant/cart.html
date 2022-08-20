@@ -1,0 +1,46 @@
+{% extends 'restaurant/baseforhome.html'%}
+{%block content%}
+    <section class="cart wrapper m-auto" style="width: 80%;">
+        <div class="heading cmt flex items-center justify-between">
+            <h3 class="title-xs text-primary">Your Cart</h3>
+            <a href="/checkout/">
+                <button type="button" class="btn primary my-2" style="font-family: 'Open Sans', sans-serif;">Checkout and load bill</button>
+            </a> 
+        </div>
+        <table class="full-width text-center"  style="margin-bottom: 40px;">
+            <thead >
+              <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for id,name in productsname.items%}
+              <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                {% for id1,quantity in productsquantity.items%}
+                    {%if id == id1 %}
+                        <td>{{quantity}}</td>
+                    {%endif%}
+                {%endfor%}
+                <td>
+                    <a href="/removefromcart/{{id}}">
+                        <button type="button" class="btn danger" name="{{id}}" style="font-family: 'Open Sans', sans-serif;">Remove</button>
+                    </a>
+                    <a href="/viewfood/{{id}}">
+                        <button type="button" class="btn primary mx-1" name="{{id}}" style="font-family: 'Open Sans', sans-serif;">Update</button>
+                    </a>
+                </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+          </table>
+    </section>
+
+
+
+     
+{% endblock%}

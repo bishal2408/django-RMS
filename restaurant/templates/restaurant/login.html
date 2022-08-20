@@ -1,0 +1,228 @@
+{%extends 'restaurant/base.html'%} {%block content%}
+<!-- Login and Signup section -->
+<div class="cmt"></div>
+<section class="text-center section-login elevated flex align-cente full-vh">
+  <div class="login-image flex column-reverse justify-center mr-lg">
+    <img
+    {% load static %}
+      src="{%static 'pic.jpg'%}"
+      alt="login image"
+      class="cover-center"
+      style="border-radius: 5px"
+    />
+  </div>
+  <div class="login-content half-width flex column pa-md card">
+    <div class="login-header flex" id="switch">
+      <a
+        href="javascript:void(0)"
+        onclick="show('login', 'register')"
+        class="action btn active half-width title-xxs mr-lg"
+        >Login</a
+      >
+      <a
+        href="javascript:void(0)"
+        onclick="show('register', 'login')"
+        class="action btn half-width title-xxs"
+        >Register</a
+      >
+    </div>
+    <!-- login page -->
+    <div id="login" style="padding: 0">
+      <form action="/handlelogin/" method="POST">
+        {%csrf_token%}
+        <div>
+          <p class="title-xxs">Sign in with:</p>
+          <button type="button" class="btn primary">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button type="button" class="btn primary">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn primary">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn primary">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+        <p class="title-xs my-md">or:</p>
+        <!-- username -->
+        <div class="form-group form-field">
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            class="full-width title-xxs"
+          />
+        </div>
+        <br />
+        <!-- password -->
+        <div class="form-group form-field">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            class="full-width title-xxs"
+          />
+        </div>
+        <div class="mb-md"></div>
+        <!-- Checkbox -->
+        <div class="flex justify-between form-field align-center">
+          <div class="checkbox">
+            <input
+              type="checkbox"
+              name="check"
+              id="check"
+              class="medium-checkbox"
+            />
+            <label for="check" class="title-xxs">Remember Me</label>
+          </div>
+          <div>
+            <a href="#" class="underline title-xxs text-primary"
+              >Forgot password?</a
+            >
+          </div>
+        </div>
+        <div class="mb-xl"></div>
+        <!-- Button -->
+        <div class="form-field">
+          <input
+            type="submit"
+            value="Login"
+            class="btn primary full-width title-xxs"
+          />
+        </div>
+        <div class="mb-xl"></div>
+        <!-- Register -->
+        <div>
+          <p class="title-xxs">
+            Not a member? &nbsp;
+            <a
+              href="javascript:void(0)"
+              onclick="show('register', 'login')"
+              class="underline text-primary"
+              >Register</a
+            >
+          </p>
+        </div>
+      </form>
+    </div>
+    <!-- register page -->
+    <div id="register" style="display: none">
+      <form onsubmit="return validate()" method="POST" action="/handlesignup/">
+        {%csrf_token%}
+        <p class="title-xxs">Sign up with:</p>
+        <div class="my-xs">
+          <button type="button" class="btn primary">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+          <button type="button" class="btn primary">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn primary">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn primary">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+        <p class="title-xs my-md">or:</p>
+        <!-- Name -->
+        <div class="form-group form-field">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter Name"
+            class="full-width title-xxs"
+          />
+        </div>
+        <p id="dis_name" class="text-danger"></p>
+
+        <!-- email -->
+        <div class="form-group form-field">
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter Email"
+            class="full-width title-xxs"
+          />
+        </div>
+        <p id="dis_email" class="text-danger"></p>
+        <!-- Username -->
+        <div class="form-group form-field">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter username"
+            class="full-width title-xxs"
+          />
+        </div>
+        <p id="dis_username" class="text-danger"></p>
+        <!-- password -->
+        <div class="form-group form-field">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter Password"
+            class="full-width title-xxs"
+          />
+        </div>
+        <p id="dis_pass" class="text-danger"></p>
+        <!-- re-password -->
+        <div class="form-group form-field">
+          <input
+            type="password"
+            name="repassword"
+            id="repassword"
+            placeholder="Enter Password Again"
+            class="full-width title-xxs"
+          />
+        </div>
+        <p id="dis_repass" class="text-danger"></p>
+        <!-- Checkbox -->
+        <div>
+          <input type="checkbox" name="check" id="term-check" />
+          <label for="term-check" style="font-size: 0.7rem"
+            >I read and agree all term and conditions</label
+          >
+        </div>
+        <br />
+        <div class="form-field">
+          <button type="submit" class="btn primary full-width title-xxs">
+            SignUp
+          </button>
+          <!-- <button type="submit" value="SignUp" class="btn info full-width title-xxs"> -->
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    // switch between login and register
+    function show(show, hidden) {
+      document.getElementById(show).style.display = "block";
+      document.getElementById(hidden).style.display = "none";
+      return false;
+    }
+    // active between login and register
+    var header = document.getElementById("switch");
+    var btns = header.getElementsByClassName("action");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+</section>
+
+
+{% endblock %}

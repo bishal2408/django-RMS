@@ -1,0 +1,77 @@
+{% extends 'restaurant/baseforhome.html'%}
+{% block content%}
+
+<section class="orderform wrapper">
+  <div class="order-table cmt">
+    <h3 class="title-xs text-primary">Selected Food</h3>
+    <hr>
+    <table class="text-center">
+      <thead>
+        <tr>
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Per price</th>
+          <th>Total per item</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for id,name in productsname.items%}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{name}}</td>
+          {% for id1,quantity in productsquantity.items%}
+          {%if id == id1 %}
+          <td>{{quantity}}</td>
+          {%endif%}
+          {%endfor%}
+          {% for id2,price in productsprice.items%}
+          {%if id == id2 %}
+          <td>{{price}}</td>
+          {%endif%}
+          {%endfor%}
+          {% for id1,quantity in productsquantity.items%}
+          {%if id == id1%}
+          {% for id2,price in productsprice.items%}
+          {%if id == id2 %}
+          <td>{% widthratio quantity 1 price%}</td>
+          {%endif%}
+          {%endfor%}
+          {%endif%}
+          {%endfor%}
+        </tr>
+        {%endfor%}
+      </tbody>
+      <h4 class="total">Grand Total : {{total}}</h4>
+    </table>
+  </div>
+  <div class="checkout" style="margin-top: 3rem;">
+    <h3 class="title-xxs text-primary underline">Please fill your checkout form</h3>
+    <form action="/confirmorder/" method="POST" onsubmit="return order_validate()" id="form-action" class="pa-xs " style="width: 70%;">
+      {% csrf_token %}
+      <div>
+        <label for="location " class="text-primary title-xxs">Location: </label>
+        <input type="text" id="location" name="location" placeholder="Enter your address" required>
+      </div>
+      <div>
+        <label for="contact1" class="text-primary  title-xxs">Contact1: </label>
+        <input type="number" id="contact1" name="contact1" placeholder="Enter your contact number" required>
+      </div>
+      <div>
+        <label for="contact2" class="text-primary  title-xxs">Contact2: </label>
+        <input type="number" id="contact2" name="contact2" placeholder="Enter your second number">
+      </div>
+      <button type="submit" class="btn primary my-2" style="font-family: 'Open Sans', sans-serif;">Issue order</button>
+      <!-- or <a href="/confirmEpay/" class="btn success">Pay with e-Sewa</a> -->
+      or <button type="submit" class="btn success my-2" style="font-family: 'Open Sans', sans-serif;" onclick="FormAction()">Pay with E-Sewa<s/button>
+    </form>
+   <script>
+    function FormAction(){
+      document.getElementById("form-action").action = '/confirmEpay/';
+    }
+   </script>
+  </div>
+</section>
+
+
+{% endblock%}

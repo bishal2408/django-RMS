@@ -1,0 +1,32 @@
+{%extends 'restaurant/baseforhome.html'%}
+{%block content%}
+<section class="review cmt mb-lg" style="width: 90%;">
+    <form action="" method="POST" class="wrapper" >
+        <h3 class="title-xs text-primary">Write your review here</h3>
+        <hr>
+        {%csrf_token%}
+        <input type="textarea" placeholder="write your reviews here" name="review">
+        <button type="submit" class="btn primary"  style="font-family: 'Open Sans', sans-serif;">Write review</button>
+    </form>
+    <br>
+    <div class="written-reviews" style="padding: 0vh 7.5vw;">
+        {%for r in reviews%}
+        <div class="card">
+            <p class="tittle-xs bold">By user: {{r.username}}</p>
+            <!-- <p class="text-primary mt-xs" style="font-style: italic; font-size: .7rem;"> <span class="italic">Logged in as: {{user}}</span> </p> -->
+            <p class="title-xxs">
+                {{r.review}}
+                {%if uname == r.username %}  
+                <a href="/removereview/{{r.id}}"> 
+                <button type="button" class="btn danger ml-lg" name="{{r.id}}" style="font-family: 'Open Sans', sans-serif;"><i class="fa fa-trash"></i> Delete</button>
+                </a>
+                {%endif%}
+            </p>
+        </div>
+
+    {%endfor%}
+    </div>
+
+</section>
+
+{%endblock%}

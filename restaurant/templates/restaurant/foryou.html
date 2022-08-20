@@ -1,0 +1,192 @@
+{% extends 'restaurant/baseforhome.html'%} {%block content%}
+<section class="foryou cmt">
+  <!-- image and content section -->
+  <div class="image-wrap">
+    {% load static %}
+    <img src="{% static 'images/home-cover.jpg' %}" alt="My image" class="full-width" />
+    <div class="image-wrap-content" style="text-align: center">
+      <h1 class="text-center text-light title-lg">
+        ONLY TASTE IS REAL FOR FOOD
+      </h1>
+      <p class="text-center text-light title-xxs mb-lg">
+        Adipi sicing elit. Quia, aliquid voluptatum corporis Dicta. Deleniti
+        possimus culpa nemo asperiores aperiam mollitia, maiores Lorem ipsum
+        dolor.
+      </p>
+    </div>
+  </div>
+  <!-- restaurent feature system -->
+  <div class="features wrapper">
+    <div class="heading text-center half-width m-auto">
+      <h3 class="title-md" style="margin-bottom: -3px;">Our Special Feature</h3>
+      <p class="title-xxs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic fuga sit illo modi aut
+        aspernatur tempore laboriosam saepe dolores eveniet.</p>
+    </div>
+    <div class="feat flex wrap mt-lg">
+      <div class="card text-center flex-1">
+        <p class="title-xs text-danger"><i class="fa fa-beer"></i></p>
+        <p class="title-xs bold">Well Decorated</p>
+        <p>Vivamus a ligula quam. Duis feugiat tortor sed Ut blandit. Duis feugiat tortor sed.</p>
+      </div>
+      <div class="card text-center flex-1">
+        <p class="title-xs text-danger"><i class="fa fa-cutlery"></i></p>
+        <p class="title-xs bold">Breakfast</p>
+        <p>Vivamus a ligula quam. Duis feugiat tortor sed Ut blandit. Duis feugiat tortor sed.</p>
+      </div>
+      <div class="card text-center flex-1">
+        <p class="title-xs text-danger"><i class="fa fa-handshake-o"></i></p>
+        <p class="title-xs bold">Expert Chef</p>
+        <p>Vivamus a ligula quam. Duis feugiat tortor sed Ut blandit. Duis feugiat tortor sed.</p>
+      </div>
+      <div class="card text-center flex-1">
+        <p class="title-xs text-danger"><i class="fa fa-smile-o"></i></p>
+        <p class="title-xs bold">Quick Serve</p>
+        <p>Vivamus a ligula quam. Duis feugiat tortor sed Ut blandit. Duis feugiat tortor sed.</p>
+      </div>
+      <div class="card text-center flex-1">
+        <p class="title-xs text-danger"><i class="fa fa-diamond"></i></p>
+        <p class="title-xs bold">Delicious Food</p>
+        <p>Vivamus a ligula quam. Duis feugiat tortor sed Ut blandit. Duis feugiat tortor sed.</p>
+      </div>
+    </div>
+  </div>
+  <!-- hero section -->
+  <div class="hero flex wrapper justify-center items-center mt-lg">
+    <div class="half-width mr-lg">
+      <div class="content-1">
+        <h3 class="title-xs">Enjoy Our Delicious Food</h3>
+        <p class="title-xxs">
+          Mollitia placeat modi explicabo voluptatum corporis unde Dicta,
+          provident Rem adipisci Mollitia placeat modi.
+        </p>
+      </div>
+      <div class="content-1">
+        <h3 class="title-xs">All Different Types</h3>
+        <p class="title-xxs">
+          Mollitia placeat modi explicabo voluptatum corporis unde Dicta,
+          provident Rem adipisci Mollitia placeat modi.
+        </p>
+      </div>
+      <div class="content-1">
+        <h3 class="title-xs">Experience new flavors</h3>
+        <p class="title-xxs">
+          Mollitia placeat modi explicabo voluptatum corporis unde Dicta,
+          provident Rem adipisci Mollitia placeat modi.
+        </p>
+      </div>
+    </div>
+    <img src="{% static 'images/hero.jpg' %}" alt="hero image" />
+  </div>
+  <!-- recommended product -->
+  <div class="recommend wrapper-x items-center">
+    <div class="heading">
+      <h3 class="title-md text-center">Most Popular Items</h3>
+    </div>
+    <div class="product flex wrap justify-between">
+      {% for food in foods %}
+      <div class="custom-card">
+        <img src="{{ food.pimage.url }}" alt="food image">
+        <div class="custom-card-body">
+          <p class="title-xxs bold ">{{ food.name }}</p>
+          <p class="title-xxs text-danger bold">{{ food.price }}</p>
+          <p style="margin-top:-10px;">{{ food.description }}</p>
+          <div class="mb-xs"><a href="/viewfood/{{ food.id }}" class="btn-custom">Order Now!</a></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- latest product -->
+  <div class="latest wrapper-x items-center">
+    <div class="heading">
+      <h3 class="title-md text-center">You May Also Like</h3>
+    </div>
+    <div class="product flex wrap justify-between">
+      {% for random in randoms %}
+      <div class="custom-card">
+        <img src="{{ random.pimage.url }}" alt="food image">
+        <div class="custom-card-body">
+          <p class="title-xxs bold ">{{ random.name }}</p>
+          <p class="title-xxs text-danger bold">{{ random.price }}</p>
+          <p style="margin-top:-10px;">{{ random.description }}</p>
+          <div class="mb-xs"><a href="/viewfood/{{ random.id }}" class="btn-custom">Order Now!</a></div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- advertisement system -->
+  <div class="ad wrapper-y">
+    {% load static %}
+    <img src="{% static 'images/advertisement.jpg' %}" alt="My image" class="full-width">
+
+    <div class="half-width ad-con">
+      <p class="text-center text-light title-lg">ENJOY OUR DELICIOUS FOOD</p>
+      <p class="text-center text-light title-xxs mb-lg" style="margin-top: -36px;">
+        Fugit tempora dolor dolore recusandae aut at cum autem esse
+        neque. Consequuntur dolor sequi nulla corrupti blanditiis similique
+      </p>
+    </div>
+  </div>
+
+  <!-- Special Items -->
+  <div class="random my-lg" >
+    <div class="heading ">
+      <h3 class="title-md text-center">Special Items</h3>
+    </div>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        {% for sp in sps %}
+        <div class="swiper-slide">
+          <img src="{{sp.pimage.url}}" alt="..." >
+          <div class="custom-card-body">
+            <p class="title-xxs bold ">{{ sp.name }}</p>
+            <p class="title-xxs text-danger bold">{{ sp.price }}</p>
+            <p style="margin-top:-10px;">{{ sp.description }}</p>
+            <a href="/viewSpecialfood/{{ sp.id }}" class="btn-custom">Order Now!</a>
+          </div>
+        </div>
+        {% endfor %}
+
+        <!-- <div class="custom-card">
+          <img src="{% static 'images/momo.jpg' %}" alt="food image">
+          <div class="custom-card-body">
+            <p class="title-xxs bold ">Food Name</p>
+            <p class="title-xxs text-danger bold">Rs. 300</p>
+            <p style="margin-top:-10px;">Lorem ipsum, dolor sit amet conse ctetur adipisicing.</p>
+            <div class="mb-xs"><a href="" class="btn-custom">Order Now!</a></div>
+          </div>
+        </div> -->
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 4,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      cssMode: false,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+
+    });
+  </script>
+</section>
+{%endblock%}

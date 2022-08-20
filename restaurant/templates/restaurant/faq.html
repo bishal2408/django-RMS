@@ -1,0 +1,107 @@
+
+{% extends 'restaurant/base.html'%}
+
+{%block content%}
+<div class="container mt-lg">
+    <div class="userFaq wrapper">
+        <p class="sub-title text-primary">FAQs</p>
+        <hr>
+
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">Do we prepare food itself? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> No. We are a food ordering and delivery service. We deliver food from any of the
+                    member restaurant. </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">From which restaurants can I order? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> You can order from any of our partner restaurants. We already have more than 170
+                    most popular
+                    restaurants in our list, and the number will continue to grow day after day. </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse active">
+                <p class="title-xs">To which locations do you deliver? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> We deliver to any locations inside of ring road and its periphery. However, we
+                    plan to deliver food to
+                    all of Kathmandu valley in the near future. </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">Do you charge more for the food than in the restaurant? </p> <a href=""
+                    class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> No. The price in our online menu is exactly the same as the table menu price of
+                    the respective member
+                    restaurants. </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">How do I pay for my food? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> You will pay our delivery agent in cash upon delivery of food to your location.
+                </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">Do you guarantee the quality for food? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> We make an effort to include restaurants on our website that are known for having
+                    good quality food.
+                    However, our main focus is hassle free ordering and delivery. The restaurant you choose will be
+                    responsible for the quality of food they offer. </p>
+            </div>
+        </div>
+        <div class="faq-content mb-xs">
+            <button class="collapse">
+                <p class="title-xs">Can I cancel my order if needed? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> You can. However, you need to inform us over the phone on time. If the ordered
+                    food is already prepared
+                    by the restaurant, you cannot cancel the order. </p>
+            </div>
+        </div>
+        <div class="faq-content">
+            <button class="collapse">
+                <p class="title-xs">where to find us? </p> <a href="" class="bx bx-trash"></a>
+            </button>
+            <div class="collapse-content">
+                <p class="title-xxs"> anywhere in kathmandu </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // collapse javascript
+        var coll = document.getElementsByClassName("collapse");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</div>
+{%endblock%}

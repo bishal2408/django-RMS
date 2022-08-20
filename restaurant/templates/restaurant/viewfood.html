@@ -1,0 +1,99 @@
+{% extends 'restaurant/baseforhome.html'%}
+{% block content%}
+{%for product in foods%}
+
+<div class="viewfood wrapper">
+    <div class="heading cmt">
+        <h3 class="title-xs text-primary">Selected Food</h3>
+    </div>
+    <hr>
+    <div class="food mt-lg pa-xs flex items-center">
+        <img src="{{product.pimage.url}}" width="180" height="180">
+        <div class="food-desc">
+            <p class="title-xs bold">{{product.name.upper}}</p>
+            <p class="title-xxs text-dark">Description: {{product.description}}</p>
+            <p class="text-danger">Price: Rs.{{product.price}}</p>
+            <p class="text-warning">Rating: {{product.rating}}</p>
+        </div>
+        <div>
+            <form action="/updatecart/{{product.id}}" onsubmit="return cartitem_validate()" method="POST">
+                {% csrf_token %}
+                <label for="quantity" class="title-xxs bold">Quantity: </label>
+                {% if product.id in productsquantity.keys%}
+                <input type="number"  id="quantity" placeholder="{{placeholder}}" min="1"
+                    name="quantity">
+                {%else%}
+                <input type="number"  id="quantity" placeholder="1" min="1" name="quantity">
+                {%endif%}
+                <br><br>
+
+                {% if product.id in productsquantity.keys%}
+                <button type="submit" class="btn primary" style="font-family: 'Open Sans', sans-serif;">Update item</button>
+                {%else%}
+                <button type="submit" class="btn primary" style="font-family: 'Open Sans', sans-serif;">Add to cart</button>
+                {%endif%}
+            </form>
+        </div>
+    </div>
+    <div class="heading cmt">
+        <h3 class="title-xs text-primary">You may also like</h3>
+        <hr>
+        <div class="flex mt-lg">
+            {% for food in rfoods %}
+            <div class="custom-card">
+                <img src="{{ food.pimage.url }}" alt="food image">
+                <div class="custom-card-body">
+                  <p class="title-xxs bold ">{{ food.name }}</p>
+                  <p class="title-xxs text-danger bold">{{ food.price }}</p>
+                  <p style="margin-top:-10px;">{{ food.description }}</p>
+                  <div class="mb-xs"><a href="/viewfood/{{ food.id }}" class="btn-custom">Order Now!</a></div>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+<!-- <div class="row my-3">
+    <div class="col-sm-3">
+        <img src="{{product.pimage.url}}" width="180" height="180">
+    </div>
+    <div class="col-sm-5">
+        <h2>{{product.name.upper}}</h2>
+        <small>
+            Description: {{product.description}}<br>
+            Price: {{product.price}}<br>
+            Rating: {{product.rating}}<br>
+        </small>
+    </div>
+    <div class="col-sm-4">
+        <h4>Issue your order</h4>
+
+        <form action="/updatecart/{{product.id}}" onsubmit="return cartitem_validate()" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+
+                <label for="quantity" class="form-label">Quantity</label>
+                {% if product.id in productsquantity.keys%}
+                <input type="number" class="form-control" id="quantity" placeholder="{{placeholder}}" min="1"
+                    name="quantity">
+                {%else%}
+                <input type="number" class="form-control" id="quantity" placeholder="1" min="1" name="quantity">
+                {%endif%}
+            </div>
+            <div>
+                {% if product.id in productsquantity.keys%}
+                <button type="submit" class="btn btn-primary">Update item</button>
+                {%else%}
+                <button type="submit" class="btn btn-warning cart">Add to cart</button>
+                {%endif%}
+            </div>
+        </form>
+    </div>
+</div> -->
+
+{%endfor%}
+{% endblock%}
+<!--  -->

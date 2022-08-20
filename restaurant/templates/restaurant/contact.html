@@ -1,0 +1,27 @@
+{% extends 'restaurant/base.html'%}
+{%block content%}
+<div class="container">
+    <section class="contactUs wrapper">
+        <h3 class="sub-title text-primary cmt">Contact Us</h3>
+        <hr>
+        <div class="contact-content">
+            <p class="title-xxs">Please fill out the form below and submit if you have any feedback or queries about our service.</p>
+            <form action="#" method="post">
+                <div class="flex half-width mb-md">
+                    <div class="half-width mr-lg">
+                        <label for="name" class="title-xxs text-primary">YOUR NAME</label><br>
+                        <input type="text" id="name" name="name" class=" full-width title-xxs mt-xs" placeholder="Your name"  required>
+                    </div>
+                    <div class="half-width">
+                        <label for="email" class="title-xxs text-primary">EMAIL ADDRESS</label> <br>
+                        <input type="email" id="email" name="email" class="full-width title-xxs mt-xs" placeholder="you@gmail.com" required>
+                    </div>
+                </div>
+                <label for="enquiry" class="title-xxs text-primary">ENQUIRY</label> <br>
+                <textarea class="half-width title-xxs mt-xs" name="enquiry" id="enquiry" placeholder="Your details here" rows="6" required style="font-family: 'Open Sans', 'sans-serif';"></textarea> <br>
+                <button type="submit" class="btn primary mt-md half-width">Submit</button>
+            </form>
+        </div>
+    </section>
+</div>
+{%endblock%}

@@ -1,0 +1,28 @@
+{%extends 'restaurant/baseforhome.html'%}
+{%block content%}
+
+<section class="update-profile cmt">
+  <div class="heading wrapper">
+    <p class="text-primary title-xs ">User info update form</p>
+    <hr>
+    <div class="flex items-center">
+      <div class="flex column" style="margin-right: 5rem;">
+
+        <a href="/updateprofileform/" style="font-family: 'Open Sans', sans-serif;"> <button type="button"
+            class="btn primary mb-lg">Edit profile</button> </a>
+        <a href="/updatepasswordform/" style="font-family: 'Open Sans', sans-serif;"> <button type="button"
+            class="btn primary">Edit password</button> </a>
+        </nav>
+      </div>
+      <div class="col-sm-10">
+        <form action="/updateprofile/" method="POST" style="padding:8px; margin-top: 3px;">
+          {%csrf_token%}
+          {{form.as_p}}
+          <button type="submit" class="btn primary" style="font-family: 'Open Sans', sans-serif;">Make changes</button>
+        </form>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</section>
+{%endblock%}

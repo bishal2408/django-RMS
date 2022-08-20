@@ -1,0 +1,114 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- javascript -->
+  <script type="text/javascript" src="{%static 'shop/validation.js'%}"></script>
+  <!-- Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- custom css -->
+  <link rel="stylesheet" href="{%static 'base.css'%}" />
+  <link rel="stylesheet" href="{%static 'style.css'%}" />
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <section class="navbar bg-secondary fixed-top full-width" style="z-index: 1000;">
+    <nav class="text-light flex justify-between wrapper-x items-center">
+      <div class="title-xs">
+        <a class="nav-items mr-lg text-light" href="{%url 'foryou'%}">KhajaTime</a>
+      </div>
+      <div class="nav-links">
+        <a class="nav-items mr-lg text-light" href="{%url 'foryou'%}">For You</a>
+        <a class="nav-items mr-lg text-light" href="{%url 'fullmenu'%}">Full Menu</a>
+        <a class="nav-items mr-lg text-light" href="{%url 'reviews'%}">Write Reviews</a>
+      </div>
+
+      <div class="ml-5 flex">
+        <a href="/cart/" class="btn login-btn text-light title-xxs mr-md"
+          style="font-family: 'Open Sans', sans-serif">My cart</a>
+        <div class="dropdown">
+          <button class="btn primary text-light title-xxs" style="font-family: 'Open Sans', sans-serif">
+            Username: {{user}}
+          </button>
+          <div class="dropdown-content">
+            <a href="/updateprofileform/">Update profile</a>
+            <a href="/ordertracker/">My order tracer</a>
+            <a href="/handlelogout/">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <div class="container">
+    {% block content %}
+    {% endblock%}
+  </div>
+
+  <section class="bg-secondary text-light full-width">
+    <footer class="footer">
+      <div class="footer-data flex">
+        <div class="flex-2 mr-lg">
+          <div class="title-xs mb-lg">KhajaTime</div>
+          <div>
+            <p>
+              Khajaghar is the fastest, easiest and most convenient way to
+              enjoy the best food of your favourite restaurants wherever you
+              want to.
+              <a href="{%url 'about'%}" class="text-primary">Click here!</a>
+              to know more
+            </p>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="title-xs mb-lg">Get Help</div>
+          <div class="nav-links flex column">
+            <a href="#" class="nav-items mb-md text-light">How to order?</a>
+            <a href="{%url 'faq'%}" class="nav-items mb-md text-light">FAQs</a>
+            <a href="{%url 'contact'%}" class="nav-items mb-md text-light">Contact Us</a>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="title-xs mb-lg">Useful Links</div>
+          <div class="nav-links flex column">
+            <a href="{%url 'about'%}" class="nav-items mb-md text-light">About Us</a>
+            <a href="#" class="nav-items mb-md text-light">Available Areas</a>
+            <a href="#" class="nav-items mb-md text-light">Delivery Charges</a>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="title-xs mb-lg">Contact</div>
+          <div class="nav-links flex column">
+            <a href="#" class="nav-items mb-md text-light"><i class="fa fa-home mr-md"></i> Kathmandu, Nepal</a>
+            <a href="#" class="nav-items mb-md text-light"><i class="fa fa-phone mr-md"></i> 014201394, 9873792892</a>
+            <a href="#" class="nav-items text-light"><i class="fa fa-envelope mr-md"></i> info@gmail.com</a>
+            <p>
+              Contact us at:
+              <a href="#" class="mx-md text-light">
+                <i class="fa fa-facebook"></i></a>
+              <a href="#" class="mr-md text-light">
+                <i class="fa fa-instagram"></i></a>
+              <a href="#" class="mr-md text-light">
+                <i class="fa fa-twitter"></i></a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="copyright text-center full-width">
+        <p>
+          <i class="fa fa-copyright"></i> 2021 Copyright MeroKhajaghar.com
+        </p>
+      </div>
+    </footer>
+  </section>
+</body>
+
+</html>
